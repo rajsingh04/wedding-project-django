@@ -31,12 +31,12 @@ SECRET_KEY = os.environ.get(
 # Use env var DEBUG='True' to enable during development on remote hosts
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-# Allow hosts via env var (comma-separated). For convenience, allow all hosts when
-# running with DEBUG=True so local/dev testing doesn't hit a 400 DisallowedHost.
-if DEBUG:
-    ALLOWED_HOSTS = ['*']
-else:
-    ALLOWED_HOSTS = [h for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h] or []
+# Allow hosts via env var (comma-separated).
+# For convenience during debugging, if no hosts are supplied we fall back
+# to `['*']` to avoid 400 responses while testing. IMPORTANT: set explicit
+# `ALLOWED_HOSTS` in production.
+_hosts = [h for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h]
+ALLOWED_HOSTS = _hosts or ['*']
 
 
 # Application definition

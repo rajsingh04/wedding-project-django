@@ -1,0 +1,88 @@
+        {% include 'header.html'%}
+        {% load static %}
+        
+        <!-- Wedding Timeline start -->
+        <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
+            <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
+                <img src="{% static 'img/wedding-bg.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
+                <img src="{% static 'img/wedding-bg.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-white">Wedding Planning Timeline</h1>
+                </div>
+                <div class="position-relative wedding-content">
+                    {% if timeline_events %}
+                    <div class="row g-4">
+                        {% for event in timeline_events %}
+                        <div class="col-6 col-md-6 col-xl-3 border {% if forloop.first %}border-bottom-0{% elif forloop.counter == 2 %}border-top-0 border-start-0{% elif forloop.counter == 3 %}border-bottom-0 border-end-0{% else %}border-top-0{% endif %}">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="{{ forloop.counter0|add:1|floatformat:1 }}s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="{{ event.icon }} text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">{{ event.time|time:"g:i A" }}{% if event.end_time %} - {{ event.end_time|time:"g:i A" }}{% endif %}</p>
+                                <h3 class="text-dark">{{ event.title }}</h3>
+                                {% if event.location %}<p class="text-muted small mb-2">{{ event.location }}</p>{% endif %}
+                                <p class="text-dark">{{ event.description|truncatewords:20 }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="row g-4">
+                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-menorah text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <h3 class="text-dark">Dinner</h3>
+                                <p class="text-dark">Join us for a delicious dinner celebration with family and friends</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-photo-video text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">11:00AM - 1:00PM</p>
+                                <h3 class="text-dark">Photoshoot</h3>
+                                <p class="text-dark">Capture beautiful memories with our professional photographer</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0 border-end-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-dungeon text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">1:00PM - 4:00PM</p>
+                                <h3 class="text-dark">Reception</h3>
+                                <p class="text-dark">Dance the night away and celebrate our new beginning</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-3 border border-top-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.7s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-ring text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">4:00PM - 5:00PM</p>
+                                <h3 class="text-dark">Ceremony</h3>
+                                <p class="text-dark">The moment we say 'I do' and become husband and wife</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
+                    <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Wedding Timeline End -->
+
+        {% include 'footer.html' %}

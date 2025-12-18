@@ -1,0 +1,301 @@
+        {% include 'header.html'%}
+        {% load static %}
+        
+        <!--- Bridesmaids & Groomsmen start -->
+        <div class="container-fluid team position-relative py-5">
+            <div class="position-absolute" style="bottom: -80px; right: 0;">
+                <img src="{% static 'img/tamp-bg-1.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="position-absolute" style="bottom: -90px; left: 0; transform: rotate(150deg);">
+                <img src="{% static 'img/tamp-bg-1.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="position-absolute" style="top: -100px; right: 0;">
+                <img src="{% static 'img/tamp-bg-1.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="position-absolute" style="top: -80px; left: 0; transform: rotate(150deg);">
+                <img src="{% static 'img/tamp-bg-1.png' %}" class="img-fluid" alt="">
+            </div>
+            <div class="container py-5">
+                <div class="mb-5 text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-2 text-dark">Bridesmaids & Groomsmen</h1>
+                    <p class="fs-5 text-dark">Meet the special people who will be standing with us on our big day</p>
+                </div>
+                {% if bridesmaids or groomsmen %}
+                {% if bridesmaids %}
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-5">Bridesmaids</h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    {% for member in bridesmaids %}
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                        <div class="team-item">
+                            <img src="{{ member.image.url }}" class="img-fluid w-100" alt="{{ member.name }}">
+                            <div class="team-text">
+                                <div class="team-content">
+                                    <h4 class="text-dark">{{ member.name }}</h4>
+                                    <p class="mb-0">{{ member.get_role_display }}</p>
+                                    {% if member.description %}<p class="small text-muted">{{ member.description|truncatewords:15 }}</p>{% endif %}
+                                </div>
+                                <div class="team-social">
+                                    {% if member.facebook_url %}<a class="btn btn-square btn-outline-primary rounded-circle mx-1" href="{{ member.facebook_url }}"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                                    {% if member.twitter_url %}<a class="btn btn-square btn-outline-primary rounded-circle mx-1" href="{{ member.twitter_url }}"><i class="fab fa-twitter"></i></a>{% endif %}
+                                    {% if member.instagram_url %}<a class="btn btn-square btn-outline-primary rounded-circle mx-1" href="{{ member.instagram_url }}"><i class="fab fa-instagram"></i></a>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if groomsmen %}
+                <div class="text-center mx-auto mb-5 mt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-5">Groomsmen</h1>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    {% for member in groomsmen %}
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                        <div class="team-item">
+                            <img src="{{ member.image.url }}" class="img-fluid w-100" alt="{{ member.name }}">
+                            <div class="team-text">
+                                <div class="team-content">
+                                    <h4 class="text-dark">{{ member.name }}</h4>
+                                    <p class="mb-0">{{ member.get_role_display }}</p>
+                                    {% if member.description %}<p class="small text-muted">{{ member.description|truncatewords:15 }}</p>{% endif %}
+                                </div>
+                                <div class="team-social">
+                                    {% if member.facebook_url %}<a class="btn btn-square btn-outline-primary rounded-circle mx-1" href="{{ member.facebook_url }}"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                                    {% if member.twitter_url %}<a class="btn btn-square btn-outline-primary rounded-circle mx-1" href="{{ member.twitter_url }}"><i class="fab fa-twitter"></i></a>{% endif %}
+                                    {% if member.instagram_url %}<a class="btn btn-square btn-outline-primary rounded-circle mx-1" href="{{ member.instagram_url }}"><i class="fab fa-instagram"></i></a>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% else %}
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/bridesmaid-1.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
+                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/bridesmaid-team-2.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
+                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/bridesmaid-3.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
+                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/bridesmaid-4.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
+                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/Groomsmen-1.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">David John</h5>
+                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/Groomsmen-2.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">David John</h5>
+                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/Groomsmen-3.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">David John</h5>
+                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <div class="team-img-main">
+                                    <img src="{% static 'img/Groomsmen-4.png' %}" class="img-fluid w-100" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
+                                    <img src="{% static 'img/team-1-bg.png' %}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <div class="team-content">
+                                <div class="d-flex flex-column p-4">
+                                    <h5 class="text-white display-6 mb-1">David John</h5>
+                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
+                                </div>
+                            </div>
+                            <div class="team-social d-flex flex-column">
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!-- Bridesmaids & Groomsmen End -->
+
+        {% include 'footer.html' %}
